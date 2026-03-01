@@ -1,28 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Update Incident</title>
-</head>
-<body>
-    <h2>Update Incident {{ incident.id }}</h2>
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4">
+    <h3>Update Incident {{ incident.id }}</h3>
 
     <form method="POST">
-        <label>Field:</label>
-        <select name="field">
-            <option value="status">Status</option>
-            <option value="description">Description</option>
-            <option value="severity">Severity</option>
-        </select>
-        <br><br>
 
-        <label>New Value:</label>
-        <input type="text" name="value" required>
-        <br><br>
+        <div class="mb-3">
+            <label>Field</label>
+            <select name="field" class="form-select">
+                <option value="status">Status</option>
+                <option value="severity">Severity</option>
+                <option value="description">Description</option>
+            </select>
+        </div>
 
-        <button type="submit">Update</button>
+        <div class="mb-3">
+            <label>New Value</label>
+            <input type="text" name="value" class="form-control" required>
+        </div>
+
+        <button class="btn btn-warning">Update</button>
     </form>
+</div>
 
-    <br>
-    <a href="/">Back</a>
-</body>
-</html>
+{% endblock %}

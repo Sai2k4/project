@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Search Incident</title>
-</head>
-<body>
-    <h2>Enter Incident ID to {{ operation }}</h2>
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4">
+    <h3>Search Incident to {{ operation|capitalize }}</h3>
 
     <form method="POST">
-        <input type="text" name="iid" placeholder="Enter Incident ID" required>
-        <button type="submit">Submit</button>
+        <div class="mb-3">
+            <label>Incident ID (e.g., INC-001)</label>
+            <input type="text" name="iid" class="form-control" required>
+        </div>
+
+        <button class="btn btn-primary">Search</button>
     </form>
-</body>
-</html>
+</div>
+
+{% endblock %}

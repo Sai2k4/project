@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Delete Incident</title>
-</head>
-<body>
-    <h2>Delete Incident</h2>
+{% extends "base.html" %}
+{% block content %}
 
-    <p>Are you sure you want to delete incident {{ incident.id }}?</p>
+<div class="card card-custom p-4 text-center">
+    <h3>Delete Incident {{ incident.id }}</h3>
 
-    <p>Status: {{ incident.status }}</p>
+    <p class="text-danger fw-bold">
+        Only incidents with status 'Resolved' can be deleted.
+    </p>
 
     <form method="POST">
-        <button type="submit">Confirm Delete</button>
+        <button class="btn btn-danger">Confirm Delete</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
     </form>
+</div>
 
-    <br>
-    <a href="/">Cancel</a>
-</body>
-</html>
+{% endblock %}

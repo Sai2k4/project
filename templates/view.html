@@ -1,24 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Incident</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-    <h2>Incident Details</h2>
+<div class="card card-custom p-4">
+    <h3>Incident Details</h3>
 
     <p><strong>ID:</strong> {{ incident.id }}</p>
     <p><strong>Service:</strong> {{ incident.service }}</p>
-    <p><strong>Severity:</strong> {{ incident.severity }}</p>
-    <p><strong>Status:</strong> {{ incident.status }}</p>
+
+    <p><strong>Severity:</strong>
+        <span class="badge badge-sev{{ incident.severity[-1] }}">
+            {{ incident.severity }}
+        </span>
+    </p>
+
+    <p><strong>Status:</strong>
+        <span class="badge badge-{{ incident.status.lower() }}">
+            {{ incident.status }}
+        </span>
+    </p>
+
     <p><strong>Description:</strong> {{ incident.description }}</p>
     <p><strong>Created At:</strong> {{ incident.created_at }}</p>
 
-    <br>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back</a>
+</div>
 
-    <a href="{{ url_for('update', iid=incident.id) }}">Update</a> |
-    <a href="{{ url_for('delete', iid=incident.id) }}">Delete</a> |
-    <a href="{{ url_for('index') }}">Back to Home</a>
-
-</body>
-</html>
+{% endblock %}
